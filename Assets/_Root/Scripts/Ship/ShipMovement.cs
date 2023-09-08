@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
@@ -15,9 +12,9 @@ public class ShipMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetTargetPos();
-        LookToTarget();
-        Moving();
+        this.GetTargetPos();
+        this.LookToTarget();
+        this.Moving();
     }
 
     protected virtual void GetTargetPos()
