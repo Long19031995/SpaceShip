@@ -3,10 +3,16 @@ using UnityEngine;
 public class ShipShooting : MonoBehaviour
 {
     [SerializeField]
-    protected bool isShooting;
+    protected bool isShooting => InputController.Instance.OnFiring == 1;
 
     [SerializeField]
     protected Transform bulletPrefab;
+
+    [SerializeField]
+    protected float shootDelay;
+
+    [SerializeField]
+    protected float shootTimer;
 
     private void FixedUpdate()
     {
@@ -19,6 +25,13 @@ public class ShipShooting : MonoBehaviour
         {
             return;
         }
+
+        this.shootTimer += Time.fixedDeltaTime;
+        if (this.shootTimer < this.shootDelay)
+        {
+            return;
+        }
+        this.shootTimer = 0;
 
         Vector3 spawnPos = transform.parent.position;
         Quaternion rotation = transform.parent.rotation;
