@@ -6,9 +6,6 @@ public class ShipShooting : MonoBehaviour
     protected bool isShooting => InputController.Instance.OnFiring == 1;
 
     [SerializeField]
-    protected Transform bulletPrefab;
-
-    [SerializeField]
     protected float shootDelay;
 
     [SerializeField]
@@ -35,6 +32,7 @@ public class ShipShooting : MonoBehaviour
 
         Vector3 spawnPos = transform.parent.position;
         Quaternion rotation = transform.parent.rotation;
-        Instantiate(this.bulletPrefab, spawnPos, rotation);
+        Transform newBullet = Spawner.Instance.Spawn(spawnPos, rotation);
+        newBullet.gameObject.SetActive(true);
     }
 }
