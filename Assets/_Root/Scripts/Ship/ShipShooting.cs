@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ShipShooting : MonoBehaviour
 {
-    [SerializeField]
     protected bool isShooting => InputController.Instance.OnFiring == 1;
 
     [SerializeField]
@@ -32,7 +31,7 @@ public class ShipShooting : MonoBehaviour
 
         Vector3 spawnPos = transform.parent.position;
         Quaternion rotation = transform.parent.rotation;
-        Transform newBullet = Spawner.Instance.Spawn(spawnPos, rotation);
+        Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.BulletOne, spawnPos, rotation);
         newBullet.gameObject.SetActive(true);
     }
 }
