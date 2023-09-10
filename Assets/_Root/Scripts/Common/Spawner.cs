@@ -1,18 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Spawner : Singleton<Spawner>
+public abstract class Spawner : MonoBehaviour, IReset
 {
     [SerializeField]
-    protected List<Transform> prefabs;
+    protected List<Transform> prefabs = new List<Transform>();
 
     [SerializeField]
-    protected List<Transform> poolObjs;
+    protected List<Transform> poolObjs = new List<Transform>();
 
     [SerializeField]
     protected Transform holder;
 
-    protected void Reset()
+    public void Reset()
     {
         this.LoadComponents();
     }

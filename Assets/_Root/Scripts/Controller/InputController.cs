@@ -1,12 +1,22 @@
 using UnityEngine;
 
-public class InputController : Singleton<InputController>
+public class InputController : MonoBehaviour, ISingleton
 {
     private Vector3 mousePos;
     public Vector3 MousePos => mousePos;
 
     private float onFiring;
     public float OnFiring => onFiring;
+
+    private void Awake()
+    {
+        this.SetSingleton();
+    }
+
+    public void SetSingleton()
+    {
+        Singleton<InputController>.Instance = this;
+    }
 
     private void FixedUpdate()
     {

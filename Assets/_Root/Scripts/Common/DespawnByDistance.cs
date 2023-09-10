@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DespawnByDistance : Despawn
+public class DespawnByDistance : Despawn, IReset
 {
     [SerializeField]
     protected float limit = 70f;
@@ -11,7 +11,7 @@ public class DespawnByDistance : Despawn
     [SerializeField]
     protected Camera mainCamera;
 
-    protected virtual void Reset()
+    public void Reset()
     {
         this.LoadComponents();
     }
