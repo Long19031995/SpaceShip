@@ -8,8 +8,8 @@ public class ObjectFly : MonoBehaviour
     [SerializeField]
     protected Vector3 direction = Vector3.up;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.parent.Translate(this.direction * this.moveSpeed * Time.deltaTime);
+        transform.parent.Translate(this.direction * this.moveSpeed * Time.fixedDeltaTime);
     }
 }

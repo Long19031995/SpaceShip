@@ -5,7 +5,7 @@ using UnityEngine;
 public class JunkRandom : MonoBehaviour, IReset
 {
     [SerializeField]
-    protected JunkController junkController;
+    protected JunkSpawnerController junkController;
 
     public void Reset()
     {
@@ -18,7 +18,7 @@ public class JunkRandom : MonoBehaviour, IReset
         {
             return;
         }
-        this.junkController = GetComponent<JunkController>();
+        this.junkController = GetComponent<JunkSpawnerController>();
     }
 
     private void Start()

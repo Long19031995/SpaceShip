@@ -5,35 +5,20 @@ using UnityEngine;
 public class JunkController : MonoBehaviour, IReset
 {
     [SerializeField]
-    protected JunkSpawner junkSpawner;
-    public JunkSpawner JunkSpawner => junkSpawner;
-
-    [SerializeField]
-    protected JunkSpawnPoints junkSpawnPoints;
-    public JunkSpawnPoints JunkSpawnPoints => junkSpawnPoints;
+    protected Transform model;
+    public Transform Model => model;
 
     public void Reset()
     {
-        this.LoadJunkController();
-        this.LoadJunkSpawnPoints();
+        this.LoadModel();
     }
 
-    protected virtual void LoadJunkController()
+    protected virtual void LoadModel()
     {
-        if (this.junkSpawner != null)
+        if (this.model != null)
         {
             return;
         }
-
-        this.junkSpawner = GetComponent<JunkSpawner>();
-    }
-
-    protected virtual void LoadJunkSpawnPoints()
-    {
-        if (this.junkSpawnPoints != null)
-        {
-            return;
-        }
-        this.junkSpawnPoints = FindObjectOfType<JunkSpawnPoints>();
+        this.model = transform.Find("Model");
     }
 }
