@@ -8,9 +8,14 @@ public class JunkController : MonoBehaviour, IReset
     protected Transform model;
     public Transform Model => model;
 
+    [SerializeField]
+    protected JunkDespawn junkDespawn;
+    public JunkDespawn JunkDespawn => junkDespawn;
+
     public void Reset()
     {
         this.LoadModel();
+        this.LoadJunkDespawn();
     }
 
     protected virtual void LoadModel()
@@ -20,5 +25,14 @@ public class JunkController : MonoBehaviour, IReset
             return;
         }
         this.model = transform.Find("Model");
+    }
+
+    protected virtual void LoadJunkDespawn()
+    {
+        if (this.junkDespawn != null)
+        {
+            return;
+        }
+        this.junkDespawn = GetComponentInChildren<JunkDespawn>();
     }
 }

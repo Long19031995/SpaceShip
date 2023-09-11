@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Singleton<T> where T : ISingleton
 {
-    private static readonly Dictionary<Type, object> dictionary = new();
+    private static readonly Dictionary<Type, object> dictionary = new Dictionary<Type, object>();
 
     public static T Instance
     {
