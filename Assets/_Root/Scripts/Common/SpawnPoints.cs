@@ -27,6 +27,10 @@ public abstract class SpawnPoints : MonoBehaviour, IReset
 
     public virtual Transform GetRandom()
     {
+        if (this.points.Count == 0)
+        {
+            return null;
+        }
         int random = Random.Range(0, this.points.Count);
         return this.points[random];
     }

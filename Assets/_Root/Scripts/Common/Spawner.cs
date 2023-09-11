@@ -61,7 +61,7 @@ public abstract class Spawner : MonoBehaviour, IReset
     {
         if (prefab == null)
         {
-            Debug.Log("Prefab node found " + prefab.name);
+            Debug.Log("Prefab node found");
             return null;
         }
 
@@ -113,11 +113,11 @@ public abstract class Spawner : MonoBehaviour, IReset
 
     public virtual Transform RandomPrefab()
     {
-        int random = Random.Range(0, this.prefabs.Count);
-        if (random == 0)
+        if (this.prefabs.Count == 0)
         {
             return null;
         }
+        int random = Random.Range(0, this.prefabs.Count);
         return this.prefabs[random];
     }
 }
