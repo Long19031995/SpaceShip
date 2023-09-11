@@ -2,6 +2,6 @@ public class JunkDespawn : DespawnByDistance
 {
     public override void DespawnObject()
     {
-        Singleton<BulletSpawner>.Instance.Despawn(transform.parent);
+        Singleton<JunkSpawner>.Instance.Despawn(transform.parent);
     }
 }

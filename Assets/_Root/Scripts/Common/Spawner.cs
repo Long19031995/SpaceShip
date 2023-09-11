@@ -12,6 +12,10 @@ public abstract class Spawner : MonoBehaviour, IReset
     [SerializeField]
     protected Transform holder;
 
+    [SerializeField]
+    protected int spawnedCount = 0;
+    public int SpawnedCount => spawnedCount;
+
     public void Reset()
     {
         this.LoadComponents();
@@ -59,6 +63,8 @@ public abstract class Spawner : MonoBehaviour, IReset
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
         newPrefab.parent = this.holder;
 
+        this.spawnedCount++;
+
         return newPrefab;
     }
 
@@ -95,5 +101,7 @@ public abstract class Spawner : MonoBehaviour, IReset
     {
         this.poolObjs.Add(obj);
         obj.gameObject.SetActive(false);
+
+        this.spawnedCount--;
     }
 }
