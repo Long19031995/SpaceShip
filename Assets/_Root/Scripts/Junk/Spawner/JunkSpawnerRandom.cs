@@ -51,10 +51,11 @@ public class JunkSpawnerRandom : MonoBehaviour, IReset
 
         Transform randomPoint = this.junkSpawnerController.JunkSpawnPoints.GetRandom();
 
+        Transform prefab = this.junkSpawnerController.JunkSpawner.RandomPrefab();
         Vector3 position = randomPoint.position;
         Quaternion rotation = randomPoint.rotation;
 
-        Transform junk = this.junkSpawnerController.JunkSpawner.Spawn(JunkSpawner.JunkOne, position, rotation);
+        Transform junk = this.junkSpawnerController.JunkSpawner.Spawn(prefab, position, rotation);
         junk.gameObject.SetActive(true);
     }
 

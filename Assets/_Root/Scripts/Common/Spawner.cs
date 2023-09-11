@@ -53,9 +53,15 @@ public abstract class Spawner : MonoBehaviour, IReset
     public virtual Transform Spawn(string prefabName, Vector3 spawnPos, Quaternion rotation)
     {
         Transform prefab = GetPrefabByName(prefabName);
+
+        return this.Spawn(prefab, spawnPos, rotation);
+    }
+
+    public virtual Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation)
+    {
         if (prefab == null)
         {
-            Debug.Log("Prefab node found " + prefabName);
+            Debug.Log("Prefab node found " + prefab.name);
             return null;
         }
 
@@ -103,5 +109,15 @@ public abstract class Spawner : MonoBehaviour, IReset
         obj.gameObject.SetActive(false);
 
         this.spawnedCount--;
+    }
+
+    public virtual Transform RandomPrefab()
+    {
+        int random = Random.Range(0, this.prefabs.Count);
+        if (random == 0)
+        {
+            return null;
+        }
+        return this.prefabs[random];
     }
 }
