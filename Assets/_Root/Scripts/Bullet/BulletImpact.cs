@@ -47,7 +47,7 @@ public class BulletImpact : BulletAbstract
     private void OnTriggerEnter2D(Collider2D other)
     {
         DamageReceiver damageReceiver = this.bulletController.BulletDamageSender.Send(other.transform);
-        if (damageReceiver.IsDead())
+        if (damageReceiver == null || damageReceiver.IsDead())
         {
             return;
         }
