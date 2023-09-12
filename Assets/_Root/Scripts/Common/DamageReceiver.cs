@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageReceiver : MonoBehaviour
+public abstract class DamageReceiver : MonoBehaviour
 {
     [SerializeField]
     protected int hp = 1;
@@ -53,7 +53,7 @@ public class DamageReceiver : MonoBehaviour
         this.CheckIsDead();
     }
 
-    protected virtual bool IsDead()
+    public virtual bool IsDead()
     {
         return this.hp <= 0;
     }
@@ -70,8 +70,5 @@ public class DamageReceiver : MonoBehaviour
         this.OnDead();
     }
 
-    protected virtual void OnDead()
-    {
-
-    }
+    protected abstract void OnDead();
 }

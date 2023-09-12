@@ -7,14 +7,15 @@ public class DamageSender : MonoBehaviour
     [SerializeField]
     protected int damage = 1;
 
-    public virtual void Send(Transform obj)
+    public virtual DamageReceiver Send(Transform obj)
     {
         DamageReceiver damageReceiver = obj.GetComponentInChildren<DamageReceiver>();
         if (damageReceiver == null)
         {
-            return;
+            return null;
         }
         this.Send(damageReceiver);
+        return damageReceiver;
     }
 
     public virtual void Send(DamageReceiver damageReceiver)
